@@ -1,4 +1,9 @@
 export const validateUtil = {
+  /**
+   * empty 여부 반환
+   * @param {*} val
+   * @returns
+   */
   isEmpty: (val) => {
     if (
       val === undefined ||
@@ -8,10 +13,14 @@ export const validateUtil = {
       (typeof val === "object" && Object.keys(val).length === 0)
     ) {
       return true;
-    } else {
-      return false;
     }
+    return false;
   },
+  /**
+   * not empty 여부 반환
+   * @param {*} val
+   * @returns
+   */
   isNotEmpty: (val) => {
     return !validateUtil.isEmpty(val);
   },
