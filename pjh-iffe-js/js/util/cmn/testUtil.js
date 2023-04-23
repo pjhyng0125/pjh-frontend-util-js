@@ -23,7 +23,7 @@
 // console.log(`localVar : ${localVar}`);
 
 // 3. sample source
-let SaladUtils = SaladUtils || {};
+var SaladUtils = SaladUtils || {};
 
 SaladUtils = (function () {
   // 샐러드구분코드 상수 선언

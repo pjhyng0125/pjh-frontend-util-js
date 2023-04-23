@@ -1,4 +1,4 @@
-const myModule = (function () {
+export const myModule = (function () {
   const consts = {
     MALE: "M",
     FEMALE: "F",
