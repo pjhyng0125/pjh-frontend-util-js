@@ -1,3 +1,6 @@
+/**
+ * 유효성 검증 유틸리티 js
+ */
 export const validateUtil = {
   /**
    * empty 여부 반환

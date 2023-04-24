@@ -1,3 +1,6 @@
+/**
+ * 타입 유틸리티 js
+ */
 export const typeUtil = {
   /**
    * string 여부 반화

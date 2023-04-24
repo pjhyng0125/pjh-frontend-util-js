@@ -14,6 +14,9 @@
 <script>
 import { validateUtil } from "../js/util/validate";
 import { typeUtil } from "../js/util/type";
+import { stringUtil } from "../js/util/string";
+import { sortUtil } from "../js/util/sort";
+import { arrayUtil } from "../js/util/array";
 
 export default {
   name: 'UtilTest',
@@ -154,6 +157,27 @@ export default {
           funcTxt: 'isArray([1, 2, 3])',
           call: () => {
             return typeUtil.isArray([1, 2, 3]);
+          },
+        },
+        {
+          utilTxt: 'stringUtil',
+          funcTxt: 'splitByDelimiter(\'A, B, C\')',
+          call: () => {
+            return stringUtil.splitByDelimiter('A,B,C');
+          },
+        },
+        {
+          utilTxt: 'sortUtil',
+          funcTxt: 'sortKorean([다,나,하,나,가])',
+          call: () => {
+            return sortUtil.sortKorean(['다','나','하','나','가']);
+          },
+        },
+        {
+          utilTxt: 'arrayUtil',
+          funcTxt: 'mergeArr([가,나,다], [하,호,허])',
+          call: () => {
+            return arrayUtil.mergeArr(['가', '나', '다'], ['하', '호', '허']);
           },
         },
       ],
