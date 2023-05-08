@@ -4,11 +4,11 @@
 export const sortUtil = {
   /**
    * 가나다 순 정렬
-   * @param {string} s
+   * @param {array} arr
    * @returns {array}
    */
-  sortKorean: (s) => {
-    return s.sort((value, target) => {
+  sortKorean: (arr) => {
+    return arr.sort((value, target) => {
       return value.localeCompare(target, "ko-KR");
     });
   },

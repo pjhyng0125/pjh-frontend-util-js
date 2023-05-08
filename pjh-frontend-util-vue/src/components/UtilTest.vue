@@ -20,9 +20,7 @@ import { arrayUtil } from "../js/util/array";
 
 export default {
   name: 'UtilTest',
-  props: {
-    msg: String
-  },
+  props: {},
   data() {
     return {
       UTIL_TEST_ARR: [
@@ -161,9 +159,9 @@ export default {
         },
         {
           utilTxt: 'stringUtil',
-          funcTxt: 'splitByDelimiter(\'A, B, C\')',
+          funcTxt: 'splitByDelimiter(\'A, B, C\', \',\')',
           call: () => {
-            return stringUtil.splitByDelimiter('A,B,C');
+            return stringUtil.splitByDelimiter('A,B,C', ',');
           },
         },
         {
@@ -181,10 +179,22 @@ export default {
           },
         },
       ],
+      oddArr: [],
+      evenArr: [],
     }
   },
   mounted() {
     console.log('[mounted] call!');
+
+    let arr = [1,2,3,4,5,8,9];
+    arr.forEach((item, idx) => {
+      console.log(`${item}, ${idx}`);
+      if (item % 2 === 0) {
+        this.evenArr.push(item);
+      } else {
+        this.oddArr.push(item);
+      }
+    });
   },
 }
 </script>

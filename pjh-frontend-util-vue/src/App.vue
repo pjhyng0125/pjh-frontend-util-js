@@ -1,16 +1,20 @@
 <template>
-  <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
-  <UtilTest msg="Welcome to Your Vue.js App"/>
+  <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+  <!-- <UtilTest/> -->
+  <StplTest/>
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-import UtilTest from './components/UtilTest.vue'
+// import UtilTest from './components/UtilTest.vue'
+import StplTest from './components/StplTest.vue'
 
 export default {
   name: 'App',
   components: {
-    UtilTest
+    // HelloWorld,
+    // UtilTest,
+    StplTest,
   }
 }
 </script>
