@@ -5,13 +5,13 @@
     <div class="terms-content" v-for="(item, idx) in stplList" :key="idx">
       <div class="terms-check">
         <label :for="item.sId">{{ item.title }}</label>
-        <input type="checkbox" :id="item.sId">
+        <input type="checkbox" :id="item.sId" v-model="item.checked">
       </div>
       <template v-if="item.type === 'mndt'">
         <div class="terms-sub-section">
           <div class="terms-check" v-for="(subItem, idx) in item.subList" :key="idx">
             <label :for="subItem.sId">{{ subItem.subTitle }}</label>
-            <input type="checkbox" :id="subItem.sId">
+            <input type="checkbox" :id="subItem.sId" v-model="subItem.checked">
           </div>
         </div>
       </template>
@@ -19,79 +19,23 @@
         <div class="terms-sub-section" v-for="(subItem, idx) in item.subList" :key="idx">
           <div class="terms-check" v-if="subItem.dsCd === '01'">
             <label :for="subItem.sId">{{ subItem.subTitle }}</label>
-            <input type="checkbox" :id="subItem.sId">
+            <input type="checkbox" :id="subItem.sId" v-model="subItem.checked">
           </div>
           <div class="terms-check" v-if="subItem.dsCd === '02'">
             <p>{{ subItem.subTitle }}</p>
             <div v-for="(advItem, idx) in subItem.advList" :key="idx">
               <label :for="advItem.sId">{{ advItem.advTitle }}</label>
-              <input type="checkbox" :id="advItem.sId">
+              <input type="checkbox" :id="advItem.sId" v-model="advItem.checked">
             </div>
           </div>
         </div>
       </template>
     </div>
-
-    <div class="terms-content">
-      <div class="terms-check">
-        <label for="agree-checkbox">전체 동의 (선택동의 포함)</label>
-        <input type="checkbox" id="agree-checkbox" name="agree-checkbox">
-      </div>
-    </div>
-    <div class="terms-content">
-      <div class="terms-check">
-        <label for="agree-checkbox">필수 약관 및 주요 안내사항</label>
-        <input type="checkbox" id="agree-checkbox" name="agree-checkbox">
-      </div>
-      <div class="terms-sub-section">
-        <div class="terms-check">
-          <label for="agree-checkbox">계약자 본인 실제 소유자 여부</label>
-          <input type="checkbox" id="agree-checkbox" name="agree-checkbox">
-        </div>
-        <div class="terms-check">
-          <label for="agree-checkbox">계약자 본인 실제 소유자 여부 2</label>
-          <input type="checkbox" id="agree-checkbox" name="agree-checkbox">
-        </div>
-      </div>
-    </div>
-    <div class="terms-content">
-      <div class="terms-check">
-        <label for="agree-checkbox">선택 항목 전체동의</label>
-        <input type="checkbox" id="agree-checkbox" name="agree-checkbox">
-      </div>
-      <div class="terms-sub-section">
-        <div class="terms-check">
-          <label for="agree-radio">문자</label>
-          <input type="checkbox" id="agree-checkbox" name="agree-checkbox">
-          <label for="disagree-radio">전화</label>
-          <input type="checkbox" id="agree-checkbox" name="agree-checkbox">
-          <label for="disagree-radio">이메일</label>
-          <input type="checkbox" id="agree-checkbox" name="agree-checkbox">
-        </div>
-        <div class="terms-check">
-          <label for="agree-checkbox">계약자 본인 실제 소유자 여부 2</label>
-          <input type="checkbox" id="agree-checkbox" name="agree-checkbox">
-        </div>
-        <div class="terms-check">
-          <label for="agree-checkbox">계약자 본인 실제 소유자 여부 2</label>
-          <input type="checkbox" id="agree-checkbox" name="agree-checkbox">
-        </div>
-        <div class="terms-check">
-          <label for="agree-checkbox">계약자 본인 실제 소유자 여부 2</label>
-          <input type="checkbox" id="agree-checkbox" name="agree-checkbox">
-        </div>
-      </div>
-    </div>
-    <button type="submit" class="accept-button" disabled>동의</button>
+    <button type="submit" class="accept-button" @click="getStplCheckedRstList">동의</button>
   </div>
 </template>
 
 <script>
-// import { validateUtil } from "../js/util/validate";
-// import { typeUtil } from "../js/util/type";
-// import { stringUtil } from "../js/util/string";
-// import { sortUtil } from "../js/util/sort";
-// import { arrayUtil } from "../js/util/array";
 
 export default {
   name: 'StplTest',
@@ -101,66 +45,79 @@ export default {
         {
           title: '전체 동의 (선택동의 포함)',
           type: 'all',
-          sId: 'STPL-ALL-MAIN',
+          sId: 'STPL_ALL_MAIN',
+          checked: false,
         },       
         {
           title: '필수 약관 및 주요 안내사항',
           type: 'mndt',
-          sId: 'STPL-MNDT-MAIN',
+          sId: 'STPL_MNDT_MAIN',
+          checked: false,
           subList: [
             {
               subTitle: '계약자 본인 실제 소유자 여부',
-              sId: 'STPL-MNDT-SUB1',
+              sId: 'STPL_MNDT_SUB1',
+              checked: false,
             },
             {
               subTitle: '계약자 본인 실제 소유자 여부2',
-              sId: 'STPL-MNDT-SUB2',
+              sId: 'STPL_MNDT_SUB2',
+              checked: false,
             },
             {
               subTitle: '계약자 본인 실제 소유자 여부3',
-              sId: 'STPL-MNDT-SUB3',
+              sId: 'STPL_MNDT_SUB3',
+              checked: false,
             }
           ],
         },
         {
           title: '선택 항목 전체동의',
           type: 'sclt',
-          sId: 'STPL-SCLT-MAIN',
+          sId: 'STPL_SCLT_MAIN',
+          checked: false,
           subList: [
             {
               subTitle: '선택 동의 1',
-              sId: 'STPL-SCLT-SUB1',
+              sId: 'STPL_SCLT_SUB1',
               dsCd: '01',
+              checked: false,
             },
             {
               subTitle: '선택 동의 2',
-              sId: 'STPL-SCLT-SUB2',
+              sId: 'STPL_SCLT_SUB2',
               dsCd: '01',
+              checked: false,
             },
             {
               subTitle: '광고성정보 수신 동의',
-              sId: 'STPL-SCLT-SUB4',
+              sId: 'STPL_SCLT_SUB4',
               dsCd: '02',
               advList: [
                 {
                   advTitle: '문자',
-                  sId: 'STPL-SCLT-ADV-SUB1',
+                  sId: 'STPL_SCLT_ADV_SUB1',
+                  checked: false,
                 },
                 {
                   advTitle: '이메일',
-                  sId: 'STPL-SCLT-ADV-SUB2',
+                  sId: 'STPL_SCLT_ADV_SUB2',
+                  checked: false,
                 },
                 {
                   advTitle: 'SMS',
-                  sId: 'STPL-SCLT-ADV-SUB3',
+                  sId: 'STPL_SCLT_ADV_SUB3',
+                  checked: false,
                 },
                 {
                   advTitle: '전화',
-                  sId: 'STPL-SCLT-ADV-SUB4',
+                  sId: 'STPL_SCLT_ADV_SUB4',
+                  checked: false,
                 },
                 {
                   advTitle: '방문',
-                  sId: 'STPL-SCLT-ADV-SUB5',
+                  sId: 'STPL_SCLT_ADV_SUB5',
+                  checked: false,
                 },
               ]
             },
@@ -169,7 +126,53 @@ export default {
       ],
     }
   },
-  mounted() {},
+  mounted() {
+    console.log(`[mounted] stplList : ${this.stplList}`);
+
+    // const flrgArr = this.stplList.map((item) => {
+    //   console.log(`[mounted] item : ${JSON.stringify(item)}`);
+    //   const isChecked = $("#" + item.sId).checked;
+    //   const stplId = item.sId;
+    //   return item.type === 'all' ? { stplId : isChecked} : {};
+    // });
+
+    // console.log(`[mounted] flrgArr : ${flrgArr}`);
+  },
+  methods : {
+    /**
+     * checked 리스트 반환
+     * @param {array} arr 
+     * @returns {object} { sId: checked }
+     */
+    getCheckedList(arr) {
+      let rst = {};
+      arr.forEach(ele => {
+        rst[ele.sId] = ele.checked;
+      });
+      // console.log(`[getCheckedList] rst : ${JSON.stringify(rst)}`);
+      return rst;
+    },
+    /**
+     * 약관 checked 결과 리스트 반환
+     */
+    getStplCheckedRstList() {
+      let rst = {};
+      this.stplList.forEach(ele => {
+        rst[ele.sId] = ele.checked;
+
+        if (ele.subList) {
+          ele.subList.forEach(sub => {
+            rst[sub.sId] = sub.checked;
+            
+            if (sub.advList) {
+              rst = {...rst, ...this.getCheckedList(sub.advList)};
+            }
+          });
+        }
+      });
+      console.log(`[getStplCheckedRstList] rst : ${JSON.stringify(rst)}`);
+    },
+  },
 }
 </script>
 
