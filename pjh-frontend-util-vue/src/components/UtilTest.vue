@@ -17,6 +17,7 @@ import { typeUtil } from "../js/util/type";
 import { stringUtil } from "../js/util/string";
 import { sortUtil } from "../js/util/sort";
 import { arrayUtil } from "../js/util/array";
+import { formatUtil } from "../js/util/format";
 
 export default {
   name: 'UtilTest',
@@ -176,6 +177,41 @@ export default {
           funcTxt: 'mergeArr([가,나,다], [하,호,허])',
           call: () => {
             return arrayUtil.mergeArr(['가', '나', '다'], ['하', '호', '허']);
+          },
+        },
+        {
+          utilTxt: 'formatUtil',
+          funcTxt: 'formatUtil.getCustomRoundNum(7.7, 0.6)',
+          call: () => {
+            return formatUtil.getCustomRoundNum(7.7, 0.6);
+          },
+        },
+        {
+          utilTxt: 'formatUtil',
+          funcTxt: 'formatUtil.getCustomRoundNum(7.5, 0.6)',
+          call: () => {
+            return formatUtil.getCustomRoundNum(7.5, 0.6);
+          },
+        },
+        {
+          utilTxt: 'formatUtil',
+          funcTxt: 'formatUtil.getCustomRoundNum(7.5, 0)',
+          call: () => {
+            return formatUtil.getCustomRoundNum(7.5, 0);
+          },
+        },
+        {
+          utilTxt: 'formatUtil',
+          funcTxt: 'formatUtil.getCustomRoundNum(7.5, 1.1)',
+          call: () => {
+            return formatUtil.getCustomRoundNum(7.5, 1.1);
+          },
+        },
+        {
+          utilTxt: 'stringUtil',
+          funcTxt: 'stringUtil.getMuliScltStr(100000, 4, true)',
+          call: () => {
+            return stringUtil.getMuliScltStr('000000', 4, true);
           },
         },
       ],

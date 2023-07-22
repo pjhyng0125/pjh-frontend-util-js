@@ -1,20 +1,20 @@
 <template>
   <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-  <!-- <UtilTest/> -->
-  <StplTest/>
+  <UtilTest/>
+  <!-- <StplTest/> -->
 </template>
 
 <script>
 // import HelloWorld from './components/HelloWorld.vue'
-// import UtilTest from './components/UtilTest.vue'
-import StplTest from './components/StplTest.vue'
+import UtilTest from './components/UtilTest.vue'
+// import StplTest from './components/StplTest.vue'
 
 export default {
   name: 'App',
   components: {
     // HelloWorld,
-    // UtilTest,
-    StplTest,
+    UtilTest,
+    // StplTest,
   }
 }
 </script>
