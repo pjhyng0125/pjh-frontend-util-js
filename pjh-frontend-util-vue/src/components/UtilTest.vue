@@ -28,28 +28,28 @@ export default {
       UTIL_TEST_ARR: [
         {
           utilTxt: 'dateUtil',
-          funcTxt: 'dateUtil.toFrmtDate("20231117", ".")',
+          funcTxt: 'toFrmtDate("20231117", ".")',
           call: () => {
             return dateUtil.toFrmtDate("20231117", ".");
           },
         },
         {
           utilTxt: 'dateUtil',
-          funcTxt: 'dateUtil.getDtwkStr("20231117")',
+          funcTxt: 'getDtwkStr("20231117")',
           call: () => {
             return dateUtil.getDtwkStr("20231117");
           },
         },
         {
           utilTxt: 'dateUtil',
-          funcTxt: 'dateUtil.getFrmtDtStr("20231117")',
+          funcTxt: 'getFrmtDtStr("20231117")',
           call: () => {
             return dateUtil.getFrmtDtStr("20231117");
           },
         },
         {
           utilTxt: 'dateUtil',
-          funcTxt: 'dateUtil.getFrmtDtStr("20231117", { monthShowYn:"N" })',
+          funcTxt: 'getFrmtDtStr("20231117", { monthShowYn:"N" })',
           call: () => {
             return dateUtil.getFrmtDtStr("20231117", { monthShowYn:"N" });
           },

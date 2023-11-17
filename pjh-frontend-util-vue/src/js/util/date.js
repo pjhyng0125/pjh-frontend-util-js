@@ -49,7 +49,7 @@ export const dateUtil = {
    * 포멧 일자 문자열 반환
    * @param {string} dt 일자 YYYYMMDD
    * @param {object} paramObj {monthShowYn:Y}
-   * @returns {string} MM월 DD일 (요일) or DD일 (요일)
+   * @returns {string} MM월 DD일 (EEE) or DD일 (EEE)
    */
   getFrmtDtStr: (dt, paramObj) => {
     if (!dt || dt.length < 8) {
