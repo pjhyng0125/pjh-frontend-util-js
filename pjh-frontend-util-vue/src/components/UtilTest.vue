@@ -18,6 +18,7 @@ import { stringUtil } from "../js/util/string";
 import { sortUtil } from "../js/util/sort";
 import { arrayUtil } from "../js/util/array";
 import { formatUtil } from "../js/util/format";
+import { dateUtil } from "../js/util/date";
 
 export default {
   name: 'UtilTest',
@@ -25,6 +26,34 @@ export default {
   data() {
     return {
       UTIL_TEST_ARR: [
+        {
+          utilTxt: 'dateUtil',
+          funcTxt: 'dateUtil.toFrmtDate("20231117", ".")',
+          call: () => {
+            return dateUtil.toFrmtDate("20231117", ".");
+          },
+        },
+        {
+          utilTxt: 'dateUtil',
+          funcTxt: 'dateUtil.getDtwkStr("20231117")',
+          call: () => {
+            return dateUtil.getDtwkStr("20231117");
+          },
+        },
+        {
+          utilTxt: 'dateUtil',
+          funcTxt: 'dateUtil.getFrmtDtStr("20231117")',
+          call: () => {
+            return dateUtil.getFrmtDtStr("20231117");
+          },
+        },
+        {
+          utilTxt: 'dateUtil',
+          funcTxt: 'dateUtil.getFrmtDtStr("20231117", { monthShowYn:"N" })',
+          call: () => {
+            return dateUtil.getFrmtDtStr("20231117", { monthShowYn:"N" });
+          },
+        },
         {
           utilTxt: 'validateUtil',
           funcTxt: 'isEmpty(true)',
